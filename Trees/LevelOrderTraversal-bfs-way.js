@@ -47,14 +47,14 @@ const BinaryTreeNode = class {
 */
 
 function level_order_traversal(root) {
-    let ret = [];
+    let result = [];
     if (root === null) {
-        return ret;
+        return result;
     }
     let queue = [];
     queue.push(root);
     while (queue.length > 0) {
-        let level = [];
+        let temp = [];
 
         // The queue currently has all the nodes of a single level.
         let currentLevelNodeCount = queue.length;
@@ -62,7 +62,7 @@ function level_order_traversal(root) {
         // Processing the nodes from the current level.
         for (let i = 0; i < currentLevelNodeCount; ++i) {
             let current = queue.shift();
-            level.push(current.value);
+            temp.push(current.value);
             if (current.left !== null) {
                 queue.push(current.left);
             }
@@ -70,7 +70,7 @@ function level_order_traversal(root) {
                 queue.push(current.right);
             }
         }
-        ret.push(level);
+        result.push(temp);
     }
-    return ret;
+    return result;
 }
